@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **/
+var msg_id = 0;
 module.exports = function(RED) {
   "use strict";
 
@@ -767,6 +768,7 @@ module.exports = function(RED) {
    */
   function runCalc(node, msg, blinds, sunPosition, weather) {
     var i;
+    var resultMsgs = [];
     for (i in blinds) {
       var previousBlindPosition = blinds[i].blindPosition;
       var previousSunInWindow = blinds[i].sunInWindow;
@@ -792,10 +794,25 @@ module.exports = function(RED) {
           blindPosition: blinds[i].blindPosition
         };
         msg.topic = "blind";
-        node.send(msg);
+        resultMsgs.push(msg);
+      }
+    }
+    if (resultMsgs.length > 0) {
+      var id = msg_id++;
+      for(let idx = 0; idx < resultMsgs.length; idx++)
+      {
+        resultMsgs[idx].parts = {
+          id: id,
+          index: idx,
+          type: "array",
+          count: resultMsgs.length,
+          len: 1
+        };
+        node.send(resultMsgs[idx]);
       }
     }
   }
+
 
   /*
    * When the blind position is manually specified, this function is used to
@@ -813,6 +830,14 @@ module.exports = function(RED) {
     blind.blindPositionReasonDesc = getBlindPositionReasonDesc("01");
     msg.payload = blind;
     msg.topic = "blind";
+    var id = msg_id++;
+    msg.parts = {
+      id: id,
+      index: 0,
+      type: "array",
+      count: 1,
+      len: 1
+    };
     node.send(msg);
   }
 
