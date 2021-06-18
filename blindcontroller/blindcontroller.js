@@ -781,6 +781,9 @@ module.exports = function(RED) {
         ? 100 - blinds[i].blindPosition
         : blinds[i].blindPosition;
 
+      blinds[i].previousBlindPosition = previousBlindPosition;
+      blinds[i].previousBlindPositionReasonCode = previousBlindPositionReasonCode;
+
       if (
         blinds[i].blindPosition != previousBlindPosition ||
         blinds[i].sunInWindow != previousSunInWindow ||
@@ -819,6 +822,9 @@ module.exports = function(RED) {
    * prepare the message and the expiry timestamp.
    */
   function setPosition(node, msg, blind) {
+    blind.previousBlindPosition = blind.blindPosition;
+    blind.previousBlindPositionReasonCode = blind.blindPositionReasonCode;
+
     blind.blindPosition = blind.opposite
       ? 100 - msg.payload.blindPosition
       : msg.payload.blindPosition;
