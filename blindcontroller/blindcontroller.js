@@ -797,7 +797,7 @@ module.exports = function(RED) {
           blindPosition: blinds[i].blindPosition
         };
         msg.topic = "blind";
-        resultMsgs.push(msg);
+        resultMsgs.push(RED.util.cloneMessage(msg));
       }
     }
     if (resultMsgs.length > 0) {
