@@ -24,6 +24,7 @@
             "temperaturethreshold" : "Wenn die Temperatur größer ist als",
             "temperaturethresholdposition"
                                    : "stelle auf",
+            "mintemperature"       : "Mindesttemperatur",
             "clouds"               : "Wolkendichte",
             "cloudsthreshold"      : "Wenn die Wolkendichte größer ist als",
             "cloudsthresholdposition"
@@ -52,6 +53,7 @@
             "temperaturethreshold" : "0",
             "temperaturethresholdposition" :
                                      "100",
+            "mintemperature"       : 25,
             "cloudsthreshold"      : "0",
             "cloudsthresholdposition" :
                                      "0",
@@ -121,7 +123,8 @@
             "05" : "Sun im Fenster",
             "06" : "Starke Wolkendecke",
             "07" : "Vorhergesagte Temperatur über Temperaturbeschränkung",
-            "08" : "UV Index über Grenzwert"
+            "08" : "UV Index über Grenzwert",
+            "09" : "Vorhergesagte Temperatur unter Minmaltemperatur"
         }
     }
 }

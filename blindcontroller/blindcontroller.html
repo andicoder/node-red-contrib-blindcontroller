@@ -98,6 +98,11 @@
         <span data-i18n="blindcontroller.label.temperaturethresholdposition"></span></label>
         <input type="text" id="node-input-temperaturethresholdposition" data-i18n="[placeholder]blindcontroller.placeholder.temperaturethresholdposition" style="width:50px; height:28px;">
     </div>
+    <div class="form-row blindcontroller-row-indent">
+        <span data-i18n="blindcontroller.label.mintemperature"></span>
+        <input type="text" id="node-input-mintemperature" data-i18n="[placeholder]blindcontroller.placeholder.mintemperature" style="width:50px; height:28px;">
+    </div>
+
     <div class="form-row blindcontroller-row">
         <label><i class="fa fa-cloud"></i> <span data-i18n="blindcontroller.label.clouds" class="row-full-width"></span></label>
     </div>
@@ -211,6 +216,10 @@
                 return (v == "" || ((n >= 0) && (n <= 100) && (n%i == 0)));
                                    }
                                   },
+            mintemperature:       {value:"", validate: function(v){
+                var n = Number(v);
+                return (v == "" || ((n >= -100) && (n <= 100)));
+            }},
             cloudsthreshold:      {value:"",
                                    validate: function (v) {
                 var n = Number(v);

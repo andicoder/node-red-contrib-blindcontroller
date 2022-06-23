@@ -24,6 +24,7 @@
             "temperaturethreshold" : "When the temperature is greater than",
             "temperaturethresholdposition"
                                    : "set to",
+            "mintemperature"       : "Minimum temperature",
             "clouds"               : "Cloud Cover",
             "cloudsthreshold"      : "When the cloud cover is greater than",
             "cloudsthresholdposition"
@@ -52,6 +53,7 @@
             "temperaturethreshold" : "0",
             "temperaturethresholdposition" :
                                      "100",
+            "mintemperature"       : 25,
             "cloudsthreshold"      : "0",
             "cloudsthresholdposition" :
                                      "0",
@@ -121,7 +123,8 @@
             "05" : "Sun in window",
             "06" : "Overcast conditions",
             "07" : "Temperature forecast above threshold",
-            "08" : "UV Index above threshold"
+            "08" : "UV Index above threshold",
+            "09" : "Temperature forecast below min temperature"
         }
     }
 }
